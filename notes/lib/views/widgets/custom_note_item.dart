@@ -8,6 +8,7 @@ import 'package:notes/views/edit_note_view.dart';
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key, required this.note});
   final NoteModel note;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class NoteItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return EditNoteView(note: note,);
+              return EditNoteView(note: note);
             },
           ),
         );
@@ -32,6 +33,7 @@ class NoteItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
+              
               title: Text(
                 note.title,
                 style: const TextStyle(color: Colors.black, fontSize: 26),
@@ -50,6 +52,20 @@ class NoteItem extends StatelessWidget {
                 onPressed: () {
                   note.delete();
                   BlocProvider.of<AddNoteCubit>(context).fetchAllNotes();
+
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                backgroundColor: Colors.black,
+                content: Text(
+                  'Note Deleted',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            );
                 },
                 icon: Icon(Icons.delete, color: Colors.black, size: 30),
               ),

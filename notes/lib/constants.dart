@@ -1,4 +1,4 @@
 import 'package:flutter/material.dart';
 
-const kprimeryColor = Color(0xffFFCC80);
+const kprimeryColor = Color.fromARGB(255, 213, 206, 211);
 const kNotesBox = 'notes_box';
